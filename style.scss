@@ -5,14 +5,14 @@ div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: function.toRem(1) $border $color-red;
+    border: function.toRem(1) solid base.$color-red;
     padding: function.toRem(10);
     gap: function.toRem(10);
 
     h1 {
-        color: $color-green;
+        color: base.$color-green;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        text-decoration: underline $color-blue;
+        text-decoration: underline base.$color-blue;
         text-underline-offset: function.toRem(8);
     }
 
@@ -30,15 +30,15 @@ div {
 
 
 article {
-    @include article-card($color-green, function.toRem(1), $border $color-green, function.toRem(1))
+    @include article-card(green,function.toRem(1) solid green, 1rem)
 }
 
 article:nth-of-type(odd) {
-    @include article-card($color-blue, $border $color-green, function.toRem(1))
+    @include article-card(blue,function.toRem(1) solid green, 1rem)
 }
 
 section:last-of-type article {
-    @include article-card($color-green, $border $color-blue, function.toRem(24))
+    @include article-card(green, function.toRem(1) solid blue, function.toRem(24))
 }
 
 div section article p {
