@@ -1,25 +1,19 @@
-@use '_base';
-@use '_function';
-
-@mixin article-card($color, $border, $font-size) {
-    color: $color;
-    border: $border;
-    font-size: $font-size
-}
+@use 'base';
+@use 'function';
 
 div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: $border $color-red;
-    padding: 10px;
-    gap: 10px;
+    border: function.toRem(1) $border $color-red;
+    padding: function.toRem(10);
+    gap: function.toRem(10);
 
     h1 {
         color: $color-green;
         font-family: Georgia, 'Times New Roman', Times, serif;
         text-decoration: underline $color-blue;
-        text-underline-offset: 8px;
+        text-underline-offset: function.toRem(8);
     }
 
     section {
@@ -28,20 +22,27 @@ div {
     }
 }
 
+@mixin article-card($color, $border, $font-size) {
+    color: $color;
+    border: $border;
+    font-size: $font-size
+}
+
+
 article {
-    @include article-card($color-green, $border $color-green, 1rem)
+    @include article-card($color-green, function.toRem(1), $border $color-green, function.toRem(1))
 }
 
 article:nth-of-type(odd) {
-    @include article-card($color-blue, $border $color-green, 1rem)
+    @include article-card($color-blue, $border $color-green, function.toRem(1))
 }
 
 section:last-of-type article {
-    @include article-card($color-green, $border $color-blue, 24px)
+    @include article-card($color-green, $border $color-blue, function.toRem(24))
 }
 
 div section article p {
-    padding: 10px;
+    padding: function.toRem(10);
     justify-content: center;
     text-align: center;
 }
